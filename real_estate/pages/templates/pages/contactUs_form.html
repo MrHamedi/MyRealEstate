@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+	Contact us form
+{% endblock title %}
+{% block body %}
+<h3>Fill this form to contact us</h3>
+<form method="post" action="." novalidate>
+	{{form.as_p}}
+	{% csrf_token %}
+	<input type="submit" value="send">	
+</form>
+{% endblock body %}

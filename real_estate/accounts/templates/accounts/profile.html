@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+	{{user}}
+{% endblock title %}
+{% block body %}
+	<h3>Profile</h3>
+	<a href="{% url 'profile_update' %}" id="profile_update_link"><button>Update</button></a>
+	<table id="profile_table">
+		<tr class="{% cycle '' 'odd' %}">
+			<td>Username </td><td>{{user}}</td>
+		</tr>
+		<tr>
+			<td>Name </td><td>{{user.profile.name}}</td>
+		</tr>
+		<tr>
+			<td>Lasr name </td>
+			<td>{{user.profile.family}}</td>
+		</tr>
+		<!-- -->
+		<tr>
+			<td>Phone </td>
+			<td>{{user.profile.phone}}</td>
+		</tr>
+		<tr>	
+			<td>Email </td>
+			<td>{{user.profile.email}}</td>
+		</tr>
+	</table>
+		<img id="profileImage" src="{{user.profile.image.url}}">
+{% endblock body %}

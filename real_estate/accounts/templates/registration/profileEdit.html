@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block body %}
+{% if  request.user.profile.image %}
+	<img id="profileUpdate_image" src="{{request.user.profile.image.url}}">
+{% endif %}
+<form action="{% url 'profile_update'%}" enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+	{{user_form.as_p}}
+	{{profile_form.as_p}}
+	<input type="submit" value="submit">
+</form>
+{% if submmited %}
+	{{message}}	
+{% endif %}
+{% endblock body %}

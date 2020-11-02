@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+	{{estate}}
+{% endblock title %}
+{% block body %}
+	<h3>{{estate.title}}</h3>
+	<table>	
+		<th>Owner </th><td>{{estate.name}}</td></tr>
+		<tr><th>submitted </th><td>{{estate.submitted}}</td></tr>
+		<tr><th>update </th><td>{{estate.update}}</td></tr>
+		<tr><th>adress </th><td>{{estate.adress}}</td></tr>
+		<tr><th>area</th><td>{{estate.area}}</td></tr>
+		<tr><th>price </th><td>{{estate.price}}</td></tr>
+		<tr><th>each meter price </th><td>{{estate.meterPrice}}</td></tr>
+		<tr><th>document status</th><td>{{estate.get_document_display}}</td></tr>
+		<tr><th>tags</th><td>
+			{% for tag in tags %}
+				{{tag}},
+			{% endfor %}
+		</td></tr>
+	</table>
+	<div id="estate_description">
+		{{estate.description}}
+	</div>
+	<table class="images_table">
+		<tr>
+			{% if estate.image1%}
+				<a href="{{estate.image1.url}}"><img class="detailImage" src="{{estate.image1.url}}"></a>
+			{% else %}
+				<a href="{% static 'default.jpg' %}"><img class="detailImage" src="{% static 'default.jpg' %}"></a>
+			{% endif %}
+			{% if estate.image2 %}
+				<a href="{{estate.image2.url}}"><img  class="detailImage" src="{{estate.image2.url}}"></a>
+			{% else %}
+				<a href="{% static 'default.jpg' %}"><img class="detailImage" src="{% static 'default.jpg' %}"></a>
+			{% endif %}
+			{% if estate.image3 %}
+				<a href="{{estate.image3.url}}"><img class="detailImage" src="{{estate.image3.url}}"></a>
+			{% else %}
+				<a href="{% static 'default.jpg' %}"><img class="detailImage" src="{% static 'default.jpg' %}"></a>
+			{% endif %}
+			{% if estate.image4 %}
+				<a href="{{estate.image4.url}}"><img class="detailImage" src="{{estate.image4.url}}"></a>
+			{% else %}
+				<a href="{% static 'default.jpg' %}"><img class="detailImage" src="{% static 'default.jpg' %}"></a>
+			{% endif %}
+		</tr>
+	</table>
+{% endblock body %}

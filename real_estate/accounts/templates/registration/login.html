@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+	Login
+{% endblock title %}
+{% block body %}
+<h2>Fill this form to login</h2> 
+<form method="post" action="." novalidate="">
+	{{form.as_p}}
+	{% csrf_token %}
+	<input type="submit" value="login">
+	<input type="hidden" name="next" value="{{next}}">
+</form>
+
+<h3>Do not have an account register <a href="{% url 'user_register' %}">here</a></h3>
+{% endblock %}

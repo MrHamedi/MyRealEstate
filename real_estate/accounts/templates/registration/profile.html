@@ -1,0 +1,18 @@
+<section style="float:left;width:50vw">
+<table>
+	<tr>
+		<th>Username : </th>
+		<td>{{profile.user.username}}</td>
+	</tr>
+	<tr>
+		<th>Phone number : </th>
+		<td>{{profile.phone}}</td>
+	</tr>
+</table>
+</section>
+<section style="float:right;">
+	{% if profile.image %}
+	<a  href="{{profile.image.url}}"><img style=";width:50vw;border:3px black double;width:300;height:150" src="{{profile.image.url}}"></a>
+	}
+	{% endif %}
+</section>

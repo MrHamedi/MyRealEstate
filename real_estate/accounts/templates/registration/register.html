@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+	Registeration
+{% endblock title %}
+{% block body %}
+<form method="post" action="." novalidate="">
+	{{form.as_p}}
+	{% csrf_token %}
+	<input type="submit" value="register">
+</form>
+{% endblock body %}
