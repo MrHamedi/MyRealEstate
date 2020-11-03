@@ -9,6 +9,7 @@ from .forms import field_form,apartment_form
 from django.utils import timezone
 from datetime import datetime
 import operator
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 
 def homePage_view(request):
 	if("apartment" in request.GET):
@@ -21,7 +22,15 @@ def homePage_view(request):
 		models=chain(fields,apartments)
 		models=sorted(models,key=operator.attrgetter("submitted"))
 		models.reverse()
-	return(render(request,"estate/homepage.html",{"models":models}))
+	paginator=Paginator(models,3)
+	page=request.GET.get("page")
+	try:
+		models=paginator.page(page)
+	except PageNotAnInteger:
+		models=paginator.page(1)
+	except EmptyPage:
+		models=paginator.page(paginator.num_page)
+	return(render(request,"estate/homepage.html",{"models":models,"page":page}))
 
 @login_required(login_url=reverse_lazy("login"))
 def estateDetail_view(request,slug,model):

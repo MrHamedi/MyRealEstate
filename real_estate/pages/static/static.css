@@ -62,7 +62,7 @@ body{
 }
 
 h3{
-	text-indent:50%;
+	text-indent:25%;
 }
 
 #estate_name{
@@ -186,4 +186,8 @@ background-color: #e0e0e0
 	color:white;
 	text-align:center;
 	font-weight:bold;
+}
+
+#pages{
+	text-indent:50%;
 }
