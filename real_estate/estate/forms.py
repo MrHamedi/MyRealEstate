@@ -1,5 +1,6 @@
 from django import forms 
 from .models import apartment,field
+import math
 
 class field_form(forms.ModelForm):
 	class Meta:
@@ -21,3 +22,17 @@ class apartment_form(forms.ModelForm):
 			"estate_slug":forms.HiddenInput,
 			"name":forms.HiddenInput,
 		}
+
+class apartment_home_page_form(forms.Form):
+	max_price=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"home_page_form"}),required=False)
+	min_price=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"home_page_form"}),required=False)
+	max_area=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"home_page_form"}),required=False)
+	min_area=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"home_page_form"}),required=False)
+	apartment=forms.BooleanField(widget=forms.HiddenInput,initial=True,required=False)
+
+class field_home_page_form(forms.Form):
+	max_price=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"home_page_form"}),required=False)
+	min_price=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"home_page_form"}),required=False)
+	max_area=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"home_page_form"}),required=False)
+	min_area=forms.IntegerField(widget=forms.NumberInput(attrs={"class":"home_page_form"}),required=False)
+	field=forms.BooleanField(widget=forms.HiddenInput,initial=True,required=False)

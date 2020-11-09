@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'static.css' %}">
 	</head>
 	<body>
-	<header>
+	<section id="header">
 	<div>
 		<a href="/"><img src="{% static 'icon.png' %}" id="logo"></a>
 		<section id="userStatus">
@@ -30,7 +30,7 @@
 			{% endif %}
 		</section>
 	</div>
-	</header>
+	</section>
 	<div id="bar">
 		<a href="/"><button>Home</button></a>
 		<a href="/page/about_us"><button>About us</button></a>
@@ -42,7 +42,7 @@
 		{% endif %}
 		<a href="/submit"><button>Submit estate</button></a>
 	</div>
-	<div id="main">
+	<div id="main_home_page">
 		{% if messages %}
 			{% for message in messages %}
 				{{message}}
@@ -52,6 +52,21 @@
 
 		{% endblock body %}
 	</div>
+	<div id="search_bar">
+		<em id="filters_name">categories</em>
+		<hr>
+		<a href="/homePageFilter/?apartment"><button class="estates_list">Apartment</button></a>
+		<a href="/homePageFilter/?field"><button class="estates_list">Field</button></a>
+		{% if apartment_fields %}
+			<form id="home_page_form" method="post" action="/homePageFilter/?apartment">
+				{{form.as_p}}
+				{% csrf_token %}
+				<input type="submit" value="filter">
+			</form>
+		{% endif %}
+	
+	</div>
+
 	<div id="footer">
 		<em> All rights reserved by Real state</em>
 	</div>
